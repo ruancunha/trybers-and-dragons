@@ -1,10 +1,11 @@
 import Archetype, { Mage } from './Archetypes';
 import Energy from './Energy';
+import { SimpleFighter } from './Fighter';
 import Fighter from './Fighter/Fighter';
 import Race, { Elf } from './Races';
 import getRandomInt from './utils';
 
-export default class Character implements Fighter {
+export default class Character implements Fighter, SimpleFighter {
   private _name: string;
   private _race: Race;
   private _archetype: Archetype;
@@ -58,11 +59,11 @@ export default class Character implements Fighter {
     return { type_: this._energy.type_, amount: this._energy.amount };
   }
 
-  public attack(enemy: Fighter): void {
+  public attack(enemy: SimpleFighter): void {
     enemy.receiveDamage(this._strength);
   }
 
-  public special(enemy: Fighter): void {
+  public special(enemy: SimpleFighter): void {
     enemy.receiveDamage(this._strength);
     const leech = getRandomInt(5, 10);
     enemy.receiveDamage(leech);
