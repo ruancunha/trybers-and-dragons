@@ -64,12 +64,12 @@ export default class Character implements Fighter {
 
   public special(enemy: Fighter): void {
     enemy.receiveDamage(this._strength);
-    // const leech = getRandomInt(5, 10);
-    // enemy.receiveDamage(leech);
-    // this._lifePoints += leech;
-    // if (this._lifePoints > this._maxLifePoints) {
-    //   this._lifePoints = this._maxLifePoints;
-    // }
+    const leech = getRandomInt(5, 10);
+    enemy.receiveDamage(leech);
+    this._lifePoints += leech;
+    if (this._lifePoints > this._maxLifePoints) {
+      this._lifePoints = this._maxLifePoints;
+    }
   }
 
   public levelUp(): void {
