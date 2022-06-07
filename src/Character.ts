@@ -1,10 +1,11 @@
 import Archetype, { Mage } from './Archetypes';
 import Energy from './Energy';
-import Fighter from './Fighter';
+import Fighter from './Fighter/Fighter';
 import Race, { Elf } from './Races';
 import getRandomInt from './utils';
 
-class Character implements Fighter {
+export default class Character implements Fighter {
+  private _name: string;
   private _race: Race;
   private _archetype: Archetype;
   private _maxLifePoints: number;
@@ -14,53 +15,54 @@ class Character implements Fighter {
   private _dexterity: number;
   private _energy: Energy;
 
-  constructor(name: string, dexterity: number) {
-    this._race = new Elf(name, dexterity);
+  constructor(name: string) {
+    this._name = name;
+    this._race = new Elf(name, 5);
     this._archetype = new Mage(name);
-    this._maxLifePoints = this._race.maxLifePoints;
+    this._maxLifePoints = this._race.maxLifePoints / 2;
     this._lifePoints = this._maxLifePoints;
     this._strength = getRandomInt(1, 10);
     this._defense = getRandomInt(1, 10);
-    this._dexterity = dexterity;
+    this._dexterity = this._race.dexterity;
     this._energy = { 
       type_: this._archetype.energyType,
       amount: getRandomInt(1, 10),
     };
   }
 
-  get race(): Race {
+  public get race(): Race {
     return this._race;
   }
 
-  get archetype(): Archetype {
+  public get archetype(): Archetype {
     return this._archetype;
   }
 
-  get lifePoints(): number {
+  public get lifePoints(): number {
     return this._lifePoints;
   }
 
-  get strength(): number {
+  public get strength(): number {
     return this._strength;
   }
 
-  get defense(): number {
+  public get defense(): number {
     return this._defense;
   }
 
-  get dexterity(): number {
+  public get dexterity(): number {
     return this._dexterity;
   }
 
-  get energy(): Energy {
-    return this._energy;
+  public get energy(): Energy {
+    return { type_: this._energy.type_, amount: this._energy.amount };
   }
 
-  attack(enemy: Fighter): void {
+  public attack(enemy: Fighter): void {
     enemy.receiveDamage(this._strength);
   }
 
-  special(enemy: Fighter): void {
+  public special(enemy: Fighter): void {
     enemy.receiveDamage(this._strength);
     // const leech = getRandomInt(5, 10);
     // enemy.receiveDamage(leech);
@@ -70,7 +72,7 @@ class Character implements Fighter {
     // }
   }
 
-  levelUp(): void {
+  public levelUp(): void {
     this._strength += getRandomInt(1, 10);
     this._dexterity += getRandomInt(1, 10);
     this._defense += getRandomInt(1, 10);
@@ -82,8 +84,8 @@ class Character implements Fighter {
     this._lifePoints = this._maxLifePoints;
   }
 
-  receiveDamage(attackPoints: number): number {
-    if (this._defense - attackPoints > 0) {
+  public receiveDamage(attackPoints: number): number {
+    if (attackPoints - this._defense > 0) {
       this._lifePoints -= (attackPoints - this._defense);
       if (this._lifePoints <= 0) {
         this._lifePoints = -1;
@@ -92,5 +94,3 @@ class Character implements Fighter {
     return this._lifePoints;
   }
 }
-
-export default Character;
