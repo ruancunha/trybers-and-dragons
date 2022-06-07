@@ -14,18 +14,6 @@ class Dwarf extends Race {
     this._dwarfCount += 1;
   }
 
-  get name(): string {
-    return this.name;
-  }
-
-  get dexterity(): number {
-    return this.dexterity;
-  }
-
-  static get dwarfCount() {
-    return this._dwarfCount;
-  }
-
   static createdRacesInstances(): number {
     return this._dwarfCount;
   }

@@ -14,18 +14,6 @@ class Elf extends Race {
     this._elfCount += 1;
   }
 
-  get name(): string {
-    return this.name;
-  }
-
-  get dexterity(): number {
-    return this.dexterity;
-  }
-
-  static get elfCount() {
-    return this._elfCount;
-  }
-
   static createdRacesInstances(): number {
     return this._elfCount;
   }

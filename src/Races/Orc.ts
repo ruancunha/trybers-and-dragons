@@ -14,18 +14,6 @@ class Orc extends Race {
     this._orcCount += 1;
   }
 
-  get name(): string {
-    return this.name;
-  }
-
-  get dexterity(): number {
-    return this.dexterity;
-  }
-
-  static get orcCount() {
-    return this._orcCount;
-  }
-
   static createdRacesInstances(): number {
     return this._orcCount;
   }
