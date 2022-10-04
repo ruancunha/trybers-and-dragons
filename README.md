@@ -1,16 +1,9 @@
-# 🚧 README em construção 🚧
+## Sobre
 
-<!-- Olá, Tryber!
+Projeto feito no módulo de back-end do curso da [Trybe](https://www.betrybe.com/). O projeto é um exercício de `POO` e `SOLID` para criar um jogo de RPG, tal qual Dungeons & Dragons (daí o nome).
 
-Esse é apenas um arquivo inicial para o README do seu projeto.
+## Habilidades desenvolvidas
 
-É essencial que você preencha esse documento por conta própria, ok?
-
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-
-⚠️ IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
-
--->
+- Programação Orientada à Objetos `POO`
+- Princípios `SOLID`
+- `Typescript` em POO
